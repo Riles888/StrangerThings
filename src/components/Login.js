@@ -19,7 +19,7 @@ function Login(props) {
         <input type="text" {...username} autoComplete="new-password" />
       </div>
       <div style={{ marginTop: 10 }}>
-        Password<br />
+        Password space<br />
         <input type="password" {...password} autoComplete="new-password" />
       </div>
       {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
