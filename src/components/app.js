@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
  
 import Login from './Login';
-import Dashboard from './Dashboard';
+import Register from './Register';
 import Home from './Home';
  
 function App() {
@@ -13,13 +13,14 @@ function App() {
           <div className="header">
             <NavLink exact activeClassName="active" to="/">Home</NavLink>
             <NavLink activeClassName="active" to="/login">Login</NavLink><small>(Access without token only)</small>
-            <NavLink activeClassName="active" to="/dashboard">Dashboard</NavLink><small>(Access with token only)</small>
+            <NavLink activeClassName="active" to="/login">Logout</NavLink><small>(Access without token only)</small>
+            <NavLink activeClassName="active" to="/register">Register</NavLink><small>(Access with token only)</small>
           </div>
           <div className="content">
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
-              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/register" component={Register} />
             </Switch>
           </div>
         </div>
