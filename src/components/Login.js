@@ -1,44 +1,69 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import Axios from 'axios';
- 
-function Login(props) {
-  const username = useFormInput('');
-  const password = useFormInput('');
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
- 
-  // handle button click of login form
-  const handleLogin = () => {
-    props.history.push('/dashboard');
-  }
- 
-  return (
+
+export default function Registration() {
+    const [usernameReg, setUsernameReg] = useState("");
+    const [passwordReg, setPasswordReg] = useState("");
+
+    const [loginStatus, setLoginStatus] = useState(""); 
+    const [token, setToken] = useState("");
+    
+    const user = {user: 
+        {
+            username: usernameReg,
+            password: passwordReg,
+        }
+    }
+    const register = async () => {
+        console.log(usernameReg, passwordReg);
+        // Axios(
+        //     "https://strangers-things.herokuapp.com/api/2104-uic-web-ft/users/register", {
+        //         method: "POST",
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({
+        //             user: {
+        //                 username: usernameReg,
+        //                 password: passwordReg,
+        //             }
+        //         })
+        //     }).then(response => response.json()).then(result => {
+        //         console.log(result);
+        //     }).catch(console.error);
+        let response = await Axios.post("https://strangers-things.herokuapp.com/api/2104-uic-web-ft/users/register", 
+        user)
+        console.log('Here is the response object: ', response);
+
+        // userToken = response.data.data.token
+        // localStorage.setItem('token', userToken);
+        
+        // console.log('Stored token: ');
+    };
+    
+
+return (
     <div>
-      Login<br /><br />
-      <div>
-        Username<br />
-        <input type="text" {...username} autoComplete="new-password" />
+      <h1>Registration</h1><br/><br/>
+      <div className="registration">
+        <label>Username</label> <br/>
+        <input
+          type="text"
+          onChange={(e) => {
+            setUsernameReg(e.target.value);
+          }}
+        />
+        <br/><label>Password</label><br/>
+        <input
+          type="text"
+          onChange={(e) => {
+            setPasswordReg(e.target.value);
+          }}
+        />
+        <br/><br/><button onClick={() => register()}> Register </button>
       </div>
-      <div style={{ marginTop: 10 }}>
-        Password space<br />
-        <input type="password" {...password} autoComplete="new-password" />
-      </div>
-      {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
-      <input type="button" value={loading ? 'Loading...' : 'Login'} onClick={handleLogin} disabled={loading} /><br />
+
+      <h1>{loginStatus}</h1>
     </div>
   );
 }
- 
-const useFormInput = initialValue => {
-  const [value, setValue] = useState(initialValue);
- 
-  const handleChange = e => {
-    setValue(e.target.value);
-  }
-  return {
-    value,
-    onChange: handleChange
-  }
-}
- 
-export default Login;
