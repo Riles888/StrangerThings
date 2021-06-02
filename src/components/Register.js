@@ -16,21 +16,7 @@ export default function Registration() {
     }
     const register = async () => {
         console.log(usernameReg, passwordReg);
-        // Axios(
-        //     "https://strangers-things.herokuapp.com/api/2104-uic-web-ft/users/register", {
-        //         method: "POST",
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify({
-        //             user: {
-        //                 username: usernameReg,
-        //                 password: passwordReg,
-        //             }
-        //         })
-        //     }).then(response => response.json()).then(result => {
-        //         console.log(result);
-        //     }).catch(console.error);
+        
         let response = await Axios.post("https://strangers-things.herokuapp.com/api/2104-uic-web-ft/users/register", 
         user)
         console.log('Here is the response object: ', response);
