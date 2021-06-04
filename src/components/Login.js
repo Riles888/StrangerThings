@@ -17,15 +17,16 @@ export default function Login() {
     const login = async () => {
         console.log(username, password);
        
-        let response = await Axios.post("https://strangers-things.herokuapp.com/api/2104-uic-web-ft/users/register", 
+        let response = await Axios.post("https://strangers-things.herokuapp.com/api/2104-uic-web-ft/users/login", 
         user)
         console.log('Here is the response object: ', response);
 
         const userToken = response.data.data.token
         const setToken = userToken;
         localStorage.setItem('token', setToken)
-
         console.log('Stored token: ', setToken);
+
+        
     };
     
 

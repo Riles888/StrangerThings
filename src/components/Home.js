@@ -2,9 +2,9 @@ import React from 'react';
  
 function Home() {
   return (
-    <div>
-      Welcome to the Home Page!
-    </div>
+    <h1>
+      Welcome to Stranger's Things!
+    </h1>
   );
 }
  
