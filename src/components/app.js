@@ -15,7 +15,7 @@ function App() {
             <NavLink exact activeClassName="active" to="/">Home</NavLink>
             <NavLink activeClassName="active" to="/Register">Register</NavLink><small></small>
             <NavLink activeClassName="active" to="/login">Login</NavLink><small></small>
-            <NavLink activeClassName="active" to="/dashboard">Profile</NavLink><small></small>
+            <NavLink activeClassName="active" to="/dashboard">Search</NavLink><small></small>
           </div>
           <div className="content">
             <Switch>
