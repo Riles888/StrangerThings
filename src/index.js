@@ -15,8 +15,8 @@ function App() {
             <NavLink activeClassName="active" to="/Posts">Posts</NavLink>
             <NavLink activeClassName="active" to="/Register">Register</NavLink>
             <NavLink activeClassName="active" to="/Login">Login</NavLink>
-            <NavLink activeClassName="active" to="/Dashboard">Profile</NavLink>
-              <div>
+            <NavLink activeClassName="active" to="/">Logout</NavLink>
+              <div className="searchbar">
                   <SearchBar />
               </div>
           </div>
