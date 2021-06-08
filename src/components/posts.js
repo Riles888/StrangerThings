@@ -12,7 +12,7 @@ function renderPosts() {
     const [willDeliver, setWillDeliver] = useState('');
 
 
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGJjYzQ1MDRmZGM1MDAwMTcxYTJlY2MiLCJ1c2VybmFtZSI6ImhleXRoZXJlMSIsImlhdCI6MTYyMjk4Mzc2MH0.3f_xMXOTADsFp83nvJ4HqvsGzlEQCdIddPyAfXHqWCw'
+    const accessToken = localStorage.getItem('token');
 
     // Axios.interceptors.request.use(
     //     config => {
@@ -52,7 +52,6 @@ function renderPosts() {
     // }
 
     const addPost = async () => {
-        localStorage.getItem('token');
         let response = await fetch("https://strangers-things.herokuapp.com/api/2104-uic-web-ft/posts", 
         {
          method: "POST",
@@ -71,7 +70,7 @@ function renderPosts() {
 }
 
     const editPost = async () => {
-        localStorage.getItem('token');
+        
 
         let res = await fetch(`https://strangers-things.herokuapp.com/api/2104-uic-web-ft/posts/`, 
         {
@@ -82,10 +81,11 @@ function renderPosts() {
         },
     })
         const data = await res.json()
-        const id = data.data.posts._id
-        console.log('data: ', data)
-
-        let response = await fetch(`https://strangers-things.herokuapp.com/api/2104-uic-web-ft/posts/${id}`, 
+       // console.log('data1: ' , data)
+        const nid = data.data.posts
+       
+        console.log('data2: ' , data.data.posts.location)
+        let response = await fetch(`https://strangers-things.herokuapp.com/api/2104-uic-web-ft/posts/10`, 
         {
         method: "PATCH",
         headers: {
@@ -95,12 +95,16 @@ function renderPosts() {
         body: JSON.stringify({
             post: userPost
         })
+        
+        
     })
+    
         // const data = await response.json()
         // console.log('Edit postData: ', data)
 
         // const id = data.data.posts._id
         // console.log('_id: ', id)
+       
 }
 
     const getPost = async () => {
@@ -112,8 +116,11 @@ function renderPosts() {
             console.log('Posts: ', results)
 
             setPosts(results);
-            console.log('Here', posts);
+    
         }
+    
+    // const handleDelete = async () => {}
+       
   
     return (
         <main>
